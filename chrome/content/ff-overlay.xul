@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://gmailgenerator/skin/overlay.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://gmailgenerator/locale/overlay.dtd">
+<overlay id="gmailgenerator-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script src="overlay.js"/>
+  <script src="ff-overlay.js"/>
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="gmailgenerator-strings" src="chrome://gmailgenerator/locale/overlay.properties"/>
+  </stringbundleset>
+
+  <popup id="contentAreaContextMenu">
+    <menuitem id="context-gmailgenerator" label="&gmailgeneratorContext.label;"
+              accesskey="&gmailgeneratorContext.accesskey;"
+              insertafter="context-stop"
+              oncommand="gmailgenerator.onMenuItemCommand(event)"/>
+  </popup>
+
+
+
+
+</overlay>

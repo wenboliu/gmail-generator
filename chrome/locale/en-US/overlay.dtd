@@ -1,0 +1,8 @@
+<!ENTITY gmailgenerator.label "Your localized menuitem">
+<!ENTITY gmailgeneratorContext.label "Your Menuitem">
+<!ENTITY gmailgeneratorContext.accesskey "Y">
+<!ENTITY gmailgeneratorToolbarButton.label "Your Toolbar Button">
+<!ENTITY gmailgeneratorToolbarButton.tooltip "This is your toolbar button!">
+<!ENTITY gmailgeneratorSidebar.label "Your Sidebar">
+<!ENTITY gmailgeneratorToolbar.name  "example">
+<!ENTITY gmailgeneratorToolbar.label "This is an example toolbar. You can hide it under View &gt; toolbars &gt; &gmailgeneratorToolbar.name;">

@@ -1,0 +1,6 @@
+content   gmailgenerator                 chrome/content/
+skin      gmailgenerator   classic/1.0   chrome/skin/
+locale    gmailgenerator   en-US         chrome/locale/en-US/
+
+
+overlay   chrome://browser/content/browser.xul   chrome://gmailgenerator/content/ff-overlay.xul
