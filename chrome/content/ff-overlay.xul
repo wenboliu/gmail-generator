@@ -9,7 +9,7 @@
     <stringbundle id="gmailgenerator-strings" src="chrome://gmailgenerator/locale/overlay.properties"/>
   </stringbundleset>
 
-  <popup id="contentAreaContextMenu" onpopupshowing="gContextMenu=new nsContextMenu(this,window.getBrowser()); gmailgenerator.onGeneratorContextMenu(event); return gContextMenu.shouldDisplay;">
+  <popup id="contentAreaContextMenu">
     <menuseparator id="context-gmailgenerator-up" insertbefore="context-sep-properties"/>
     <menuitem id="context-gmailgenerator" label="&gmailgeneratorContext.label;"
               accesskey="&gmailgeneratorContext.accesskey;"
