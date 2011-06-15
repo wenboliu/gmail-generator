@@ -1,5 +1,5 @@
-<!ENTITY prefwindow.title "gmail generator preferences">
-<!ENTITY pane1.title "gmail generator preferences">
+<!ENTITY prefwindow.title "Gmail Generator Preferences">
+<!ENTITY pane1.title "Gmail Generator Preferences">
 <!ENTITY checkboolpref.label "A Boolean Preference">
 <!ENTITY checkboolpref.accesskey "B">
 <!ENTITY intpref.label "An Integer Preference">

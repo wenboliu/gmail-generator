@@ -1,5 +1,5 @@
-<!ENTITY gmailgenerator.label "Your localized menuitem">
-<!ENTITY gmailgeneratorContext.label "Your Menuitem">
+<!ENTITY gmailgenerator.label "Gmail Generator">
+<!ENTITY gmailgeneratorContext.label "Travel">
 <!ENTITY gmailgeneratorContext.accesskey "Y">
 <!ENTITY gmailgeneratorToolbarButton.label "Your Toolbar Button">
 <!ENTITY gmailgeneratorToolbarButton.tooltip "This is your toolbar button!">
