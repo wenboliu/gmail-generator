@@ -6,7 +6,11 @@ var gmailgenerator = {
     this.toEle = null;
     this.subjectEle = null;
     this.bodyEle = null;
+    this.currentURL = document.commandDispatcher.focusedWindow.document.URL;
     this.strings = document.getElementById("gmailgenerator-strings");
+    if (this.currentURL.indexOf("&travelType=") > -1) {
+        fillTemplate(this.currentURL.replace(/^\S*&travelType=/,""));
+    }
   },
 
   onMenuItemCommand: function(e) {
@@ -23,9 +27,12 @@ var gmailgenerator = {
   },
   
   openComposeWindow: function(travelType) {
-    var currentURL = document.commandDispatcher.focusedWindow.document.URL;
-    window.open (currentURL.replace(/\?\S*$/, "?view=cm&fs=1&tf=1&source=mailto&travelType="+travelType));
-  }
+    window.open (this.currentURL.replace(/\?\S*$/, "?view=cm&fs=1&tf=1&source=mailto&travelType="+travelType));
+  },
+  
+  fillTemplate:function(travelType) {
+      
+  } 
 
 };
 

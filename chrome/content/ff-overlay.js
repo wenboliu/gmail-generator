@@ -10,12 +10,9 @@ gmailgenerator.showFirefoxContextMenu = function(event) {
 
 
 gmailgenerator.isHiddenContextMenu = function(event) {
-  var strDocumentUrl = document.commandDispatcher.focusedWindow.document.URL;
-  if (strDocumentUrl.indexOf("mail.google.com") == -1) {
+  if (this.currentURL.indexOf("mail.google.com") == -1) {
       return true;
   }
-  
-  
   var canvasFrame = window.content.document.getElementById("canvas_frame");
   if (!canvasFrame) {
       return true;
