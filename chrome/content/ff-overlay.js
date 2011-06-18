@@ -15,26 +15,28 @@ gmailgenerator.isHiddenContextMenu = function(event) {
       return true;
   }
   
+  
   var canvasFrame = window.content.document.getElementById("canvas_frame");
   if (!canvasFrame) {
       return true;
   }
-  var canvasDoc = canvasFrame.contentDocument;
-  var toElems = canvasDoc.getElementsByName("to");
-  if (!toElems || toElems.length < 1) {
-      return true;
-  }
-  this.toEle = toElems[0];
-  var subElems = canvasDoc.getElementsByName("subject");
-  if (!subElems || subElems.length < 1) {
-      return true;
-  }
-  this.subjectEle = subElems[0];
-  var bodyElems = canvasDoc.getElementsByName("body");
-  if (!bodyElems || bodyElems.length < 1) {
-      return true;
-  }
-  this.bodyEle = bodyElems[0];
+  this.canvasDoc = canvasFrame.contentDocument;
+  
+//  var toElems = canvasDoc.getElementsByName("to");
+//  if (!toElems || toElems.length < 1) {
+//      return true;
+//  }
+//  this.toEle = toElems[0];
+//  var subElems = canvasDoc.getElementsByName("subject");
+//  if (!subElems || subElems.length < 1) {
+//      return true;
+//  }
+//  this.subjectEle = subElems[0];
+//  var bodyElems = canvasDoc.getElementsByName("body");
+//  if (!bodyElems || bodyElems.length < 1) {
+//      return true;
+//  }
+//  this.bodyEle = bodyElems[0];
   return false;
 };
 
