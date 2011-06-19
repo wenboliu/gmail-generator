@@ -2,10 +2,6 @@ var gmailgenerator = {
   onLoad: function() {
     // initialization code
     this.initialized = true;
-    this.canvasDoc = null;
-    this.toEle = null;
-    this.subjectEle = null;
-    this.bodyEle = null;
     this.strings = document.getElementById("gmailgenerator-strings");
   },
 
@@ -30,9 +26,18 @@ var gmailgenerator = {
       return document.commandDispatcher.focusedWindow.document.URL;
   },
   
-  getPromptService: function() {
-      return Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
-	                                 .getService(Components.interfaces.nsIPromptService);
+  alertMessage: function(title,content) {
+    var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
+                                 .getService(Components.interfaces.nsIPromptService);
+    promptService.alert(window, title, content);
+  },
+  
+  getCanvasFrame: function() {
+      return window.content.document.getElementById("canvas_frame");
+  },
+  
+  getTemplate: function(travelType) {
+      return new Template(travelType);
   }
   
 };

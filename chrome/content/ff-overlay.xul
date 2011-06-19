@@ -2,6 +2,7 @@
 <?xml-stylesheet href="chrome://gmailgenerator/skin/overlay.css" type="text/css"?>
 <!DOCTYPE overlay SYSTEM "chrome://gmailgenerator/locale/overlay.dtd">
 <overlay id="gmailgenerator-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script src="template.js"/>
   <script src="overlay.js"/>
   <script src="ff-overlay.js"/>
 

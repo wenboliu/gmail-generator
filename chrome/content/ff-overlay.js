@@ -16,39 +16,44 @@ gmailgenerator.isHiddenContextMenu = function(event) {
   if (gmailgenerator.getCurrentURL().indexOf("mail.google.com") == -1) {
       return true;
   }
-  var canvasFrame = window.content.document.getElementById("canvas_frame");
+  var canvasFrame = gmailgenerator.getCanvasFrame();
   if (!canvasFrame) {
       return true;
   }
-  this.canvasDoc = canvasFrame.contentDocument;
-  
-//  var toElems = canvasDoc.getElementsByName("to");
-//  if (!toElems || toElems.length < 1) {
-//      return true;
-//  }
-//  this.toEle = toElems[0];
-//  var subElems = canvasDoc.getElementsByName("subject");
-//  if (!subElems || subElems.length < 1) {
-//      return true;
-//  }
-//  this.subjectEle = subElems[0];
-//  var bodyElems = canvasDoc.getElementsByName("body");
-//  if (!bodyElems || bodyElems.length < 1) {
-//      return true;
-//  }
-//  this.bodyEle = bodyElems[0];
   return false;
 };
 
 gmailgenerator.composeTravelMail = function(event) {
-    var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
-                                 .getService(Components.interfaces.nsIPromptService);
     var position = gmailgenerator.getCurrentURL().indexOf("&travelType=");
     if ( position > -1) {
-        var travelType = getCurrentURL().replace(/\S*&travelType=/,"");
-        gmailgenerator.getPromptService().alert(window, this.strings.getString("helloMessageTitle"),
-                                travelType);
+        gmailgenerator.travelType = gmailgenerator.getCurrentURL().replace(/\S*&travelType=/,"");
+        window.setTimeout(function(){   gmailgenerator.populateMailContent(); }, 6000);
     }
 };
+
+gmailgenerator.populateMailContent = function() {
+    var template = gmailgenerator.getTemplate(gmailgenerator.travelType);
+    var canvasFrame = gmailgenerator.getCanvasFrame();
+    if (canvasFrame) {
+        var canvasDoc = canvasFrame.contentDocument;
+        if (canvasDoc) {
+              var toElem = canvasDoc.getElementById(":qo");
+              if (!toElem) {
+                  return;
+              }
+              canvasDoc.getElementById(":rl").childNodes[1].style.display = "";
+//              canvasDoc.getElementById(":re").style.display = "none";
+              toElem.value = template.getEmailTo();
+              canvasDoc.getElementById(":qn").value = template.getEmailCc();
+              canvasDoc.getElementById(":ql").value = template.getSubject();
+              try{
+                canvasDoc.getElementById(":qa").contentDocument.getElementById(":qa").innerHTML = "<br>" + template.getHTMLContent();
+              }catch(e) {
+                  canvasDoc.getElementById(":pp").value = template.getContent();
+              }
+        }
+    }
+};
+
 
 window.addEventListener("load", function () {gmailgenerator.onFirefoxLoad();}, false);
