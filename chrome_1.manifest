@@ -1,0 +1,6 @@
+content   gmailgenerator                 jar:chrome/gmail-generator.jar!/content/
+skin      gmailgenerator   classic/1.0   jar:chrome/gmail-generator.jar!/skin/
+locale    gmailgenerator   en-US         jar:chrome/gmail-generator.jar!/locale/en-US/
+
+
+overlay   chrome://browser/content/browser.xul   chrome://gmailgenerator/content/ff-overlay.xul

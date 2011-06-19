@@ -28,32 +28,43 @@ gmailgenerator.composeTravelMail = function(event) {
     var position = gmailgenerator.getCurrentURL().indexOf("&travelType=");
     if ( position > -1) {
         gmailgenerator.travelType = gmailgenerator.getCurrentURL().replace(/\S*&travelType=/,"");
-        window.setTimeout(function(){   gmailgenerator.populateMailContent(); }, 6000);
+        gmailgenerator.loadingCheck();
     }
 };
+
+gmailgenerator.loadingCheck = function(event) {
+    window.setTimeout(function(){   gmailgenerator.populateMailContent(); }, 1000);
+};
+
+
 
 gmailgenerator.populateMailContent = function() {
     var template = gmailgenerator.getTemplate(gmailgenerator.travelType);
     var canvasFrame = gmailgenerator.getCanvasFrame();
     if (canvasFrame) {
-        var canvasDoc = canvasFrame.contentDocument;
-        if (canvasDoc) {
-              var toElem = canvasDoc.getElementById(":qo");
-              if (!toElem) {
-                  return;
-              }
-              canvasDoc.getElementById(":rl").childNodes[1].style.display = "";
-//              canvasDoc.getElementById(":re").style.display = "none";
-              toElem.value = template.getEmailTo();
-              canvasDoc.getElementById(":qn").value = template.getEmailCc();
-              canvasDoc.getElementById(":ql").value = template.getSubject();
-              try{
-                canvasDoc.getElementById(":qa").contentDocument.getElementById(":qa").innerHTML = "<br>" + template.getHTMLContent();
-              }catch(e) {
-                  canvasDoc.getElementById(":pp").value = template.getContent();
-              }
+        try {
+            var canvasDoc = canvasFrame.contentDocument;
+            if (canvasDoc) {
+                  var toElem = canvasDoc.getElementById(":qo");
+                  if (toElem) {
+                      canvasDoc.getElementById(":rl").childNodes[1].style.display = "";
+        //              canvasDoc.getElementById(":re").style.display = "none";
+                      toElem.value = template.getEmailTo();
+                      canvasDoc.getElementById(":qn").value = template.getEmailCc();
+                      canvasDoc.getElementById(":ql").value = template.getSubject();
+                      try{
+                        canvasDoc.getElementById(":qa").contentDocument.getElementById(":qa").innerHTML = "<br>" + template.getHTMLContent();
+                      }catch(e) {
+                          canvasDoc.getElementById(":pp").value = template.getContent();
+                      }
+                  }
+            }
+            return;
+        }catch(e){
         }
     }
+    gmailgenerator.loadingCheck();
+    
 };
 
 
