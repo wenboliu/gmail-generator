@@ -5,17 +5,17 @@ var gmailgenerator = {
     this.strings = document.getElementById("gmailgenerator-strings");
   },
 
-  onMenuItemCommand: function(e) {
+  onDomesticCommand: function(e) {
     gmailgenerator.openComposeWindow("domestic");
-    
-    //this.toEle.value = "ToEmailAddress";
-    //this.subjectEle.value = "subject";
-    //this.bodyEle.value = "test body content";
+  },
+  
+  onInternationalCommand: function(e) {
+    gmailgenerator.openComposeWindow("international");
   },
 
   onToolbarButtonCommand: function(e) {
     // just reuse the function above.  you can change this, obviously!
-    gmailgenerator.onMenuItemCommand(e);
+    gmailgenerator.onDomesticCommand(e);
   },
   
   openComposeWindow: function(travelType) {

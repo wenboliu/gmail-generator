@@ -8,7 +8,8 @@ gmailgenerator.onFirefoxLoad = function(event) {
 
 gmailgenerator.showFirefoxContextMenu = function(event) {
   // show or hide the menuitem based on what the context menu is on
-  document.getElementById("context-gmailgenerator").hidden = gmailgenerator.isHiddenContextMenu(event);
+  document.getElementById("context-gmailgenerator-domestic").hidden = gmailgenerator.isHiddenContextMenu(event);
+  document.getElementById("context-gmailgenerator-international").hidden = gmailgenerator.isHiddenContextMenu(event);
 };
 
 

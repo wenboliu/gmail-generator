@@ -12,10 +12,14 @@
 
   <popup id="contentAreaContextMenu">
     <menuseparator id="context-gmailgenerator-up" insertbefore="context-sep-properties"/>
-    <menuitem id="context-gmailgenerator" label="&gmailgeneratorContext.label;"
-              accesskey="&gmailgeneratorContext.accesskey;"
+    <menuitem id="context-gmailgenerator-domestic" label="&gmailgeneratorContext.domestic.label;"
+              accesskey="&gmailgeneratorContext.domestic.accesskey;"
               insertafter="context-stop"
-              oncommand="gmailgenerator.onMenuItemCommand(event)" insertbefore="context-sep-properties"/>
+              oncommand="gmailgenerator.onDomesticCommand(event)" insertbefore="context-sep-properties"/>
+    <menuitem id="context-gmailgenerator-international" label="&gmailgeneratorContext.international.label;"
+              accesskey="&gmailgeneratorContext.international.accesskey;"
+              insertafter="context-stop"
+              oncommand="gmailgenerator.onInternationalCommand(event)" insertbefore="context-sep-properties"/>
   </popup>
 
 
