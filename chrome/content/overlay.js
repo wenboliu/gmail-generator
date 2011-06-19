@@ -6,15 +6,11 @@ var gmailgenerator = {
     this.toEle = null;
     this.subjectEle = null;
     this.bodyEle = null;
-    this.currentURL = document.commandDispatcher.focusedWindow.document.URL;
     this.strings = document.getElementById("gmailgenerator-strings");
-    if (this.currentURL.indexOf("&travelType=") > -1) {
-        fillTemplate(this.currentURL.replace(/^\S*&travelType=/,""));
-    }
   },
 
   onMenuItemCommand: function(e) {
-    openComposeWindow("domestic");
+    gmailgenerator.openComposeWindow("domestic");
     
     //this.toEle.value = "ToEmailAddress";
     //this.subjectEle.value = "subject";
@@ -27,13 +23,18 @@ var gmailgenerator = {
   },
   
   openComposeWindow: function(travelType) {
-    window.open (this.currentURL.replace(/\?\S*$/, "?view=cm&fs=1&tf=1&source=mailto&travelType="+travelType));
+    window.open (gmailgenerator.getCurrentURL().replace(/\?\S*$/, "?view=cm&fs=1&tf=1&source=mailto&travelType="+travelType));
   },
   
-  fillTemplate:function(travelType) {
-      
-  } 
-
+  getCurrentURL: function() {
+      return document.commandDispatcher.focusedWindow.document.URL;
+  },
+  
+  getPromptService: function() {
+      return Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
+	                                 .getService(Components.interfaces.nsIPromptService);
+  }
+  
 };
 
 window.addEventListener("load", function(){gmailgenerator.onLoad();}, true);

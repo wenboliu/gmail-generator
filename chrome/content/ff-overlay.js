@@ -1,6 +1,9 @@
 gmailgenerator.onFirefoxLoad = function(event) {
-  document.getElementById("contentAreaContextMenu")
+    document.getElementById("contentAreaContextMenu")
           .addEventListener("popupshowing", function (e){gmailgenerator.showFirefoxContextMenu(e);}, false);
+    gBrowser.addEventListener('DOMContentLoaded', function (e) {
+        gmailgenerator.composeTravelMail(e);
+    }, false);
 };
 
 gmailgenerator.showFirefoxContextMenu = function(event) {
@@ -10,7 +13,7 @@ gmailgenerator.showFirefoxContextMenu = function(event) {
 
 
 gmailgenerator.isHiddenContextMenu = function(event) {
-  if (this.currentURL.indexOf("mail.google.com") == -1) {
+  if (gmailgenerator.getCurrentURL().indexOf("mail.google.com") == -1) {
       return true;
   }
   var canvasFrame = window.content.document.getElementById("canvas_frame");
@@ -37,5 +40,15 @@ gmailgenerator.isHiddenContextMenu = function(event) {
   return false;
 };
 
+gmailgenerator.composeTravelMail = function(event) {
+    var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
+                                 .getService(Components.interfaces.nsIPromptService);
+    var position = gmailgenerator.getCurrentURL().indexOf("&travelType=");
+    if ( position > -1) {
+        var travelType = getCurrentURL().replace(/\S*&travelType=/,"");
+        gmailgenerator.getPromptService().alert(window, this.strings.getString("helloMessageTitle"),
+                                travelType);
+    }
+};
 
 window.addEventListener("load", function () {gmailgenerator.onFirefoxLoad();}, false);
