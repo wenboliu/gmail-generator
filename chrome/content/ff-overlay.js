@@ -42,25 +42,25 @@ gmailgenerator.populateMailContent = function() {
     var template = gmailgenerator.getTemplate(gmailgenerator.travelType);
     var canvasFrame = gmailgenerator.getCanvasFrame();
     if (canvasFrame) {
-        try {
-            var canvasDoc = canvasFrame.contentDocument;
-            if (canvasDoc) {
-                  var toElem = canvasDoc.getElementById(":qo");
-                  if (toElem) {
-                      canvasDoc.getElementById(":rl").childNodes[1].style.display = "";
-        //              canvasDoc.getElementById(":re").style.display = "none";
-                      toElem.value = template.getEmailTo();
-                      canvasDoc.getElementById(":qn").value = template.getEmailCc();
-                      canvasDoc.getElementById(":ql").value = template.getSubject();
-                      try{
-                        canvasDoc.getElementById(":qa").contentDocument.getElementById(":qa").innerHTML = "<br>" + template.getHTMLContent();
+        var canvasDoc = canvasFrame.contentDocument;
+        if (canvasDoc) {
+              var toElem = canvasDoc.getElementById(":qo");
+              if (toElem) {
+                  canvasDoc.getElementById(":rl").childNodes[1].style.display = "";
+    //              canvasDoc.getElementById(":re").style.display = "none";
+                  toElem.value = template.getEmailTo();
+                  canvasDoc.getElementById(":qn").value = template.getEmailCc();
+                  canvasDoc.getElementById(":ql").value = template.getSubject();
+                  try{
+                    canvasDoc.getElementById(":qa").contentDocument.getElementById(":qa").innerHTML = "<br>" + template.getHTMLContent();
+                  }catch(e) {
+                      try {
+                        canvasDoc.getElementById(":pp").value = template.getContent();
                       }catch(e) {
-                          canvasDoc.getElementById(":pp").value = template.getContent();
+                        gmailgenerator.loadingCheck();  
                       }
                   }
-            }
-            return;
-        }catch(e){
+              }
         }
     }
     gmailgenerator.loadingCheck();
