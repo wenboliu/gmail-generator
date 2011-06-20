@@ -7,7 +7,7 @@ Template.prototype.getEmailTo = function() {
 };
 
 Template.prototype.getEmailCc = function() {
-        var emailCC = "<YOUR PM>, <YOUR RM>, china_admin_staff@thoughtworks.com, rmchina@thoughtworks.com, szhang@thoughtworks.com";
+        var emailCC = "<YOUR PM>, china_admin_staff@thoughtworks.com, rmchina@thoughtworks.com, szhang@thoughtworks.com";
         if (this.travelType != "domestic") {
                 emailCC = emailCC + ",international_travel_-_china@thoughtworks.com"
         }
