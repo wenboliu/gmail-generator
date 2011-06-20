@@ -1,3 +1,4 @@
+rm -Rf target
 mkdir target
 cp -Rf chrome target/chrome
 cp install.rdf target/install.rdf
