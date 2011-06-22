@@ -9,4 +9,4 @@ rm -Rf content
 rm -Rf skin
 rm -Rf locale
 cd ..
-zip -r gmail-generator.xip install.rdf chrome.manifest chrome/gmail-generator.jar
+zip -r gmail-generator.xpi install.rdf chrome.manifest chrome/gmail-generator.jar

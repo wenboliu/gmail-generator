@@ -9,7 +9,9 @@ Template.prototype.getEmailTo = function() {
 Template.prototype.getEmailCc = function() {
         var emailCC = "<YOUR PM>, china_admin_staff@thoughtworks.com, rmchina@thoughtworks.com, szhang@thoughtworks.com";
         if (this.travelType != "domestic") {
-                emailCC = emailCC + ",international_travel_-_china@thoughtworks.com"
+                emailCC = emailCC + ",international_travel_-_china@thoughtworks.com";
+        } else {
+                emailCC = emailCC + ",lifang.lei1122@gmail.com";
         }
         return emailCC;
 };

@@ -60,6 +60,7 @@ gmailgenerator.populateMailContent = function() {
                         gmailgenerator.loadingCheck();  
                       }
                   }
+                  return;
               }
         }
     }
