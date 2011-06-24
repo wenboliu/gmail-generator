@@ -3,7 +3,7 @@
   <Description about="urn:mozilla:install-manifest">
     <em:id>wbliu@thoughtworks.com</em:id>
     <em:type>2</em:type>
-    <em:name>gmail generator</em:name>
+    <em:name>Travel Request</em:name>
     <em:version>0.1</em:version>
     <em:creator>Wenbo Liu</em:creator>
     <em:contributor></em:contributor>
@@ -14,7 +14,7 @@
       <Description>
         <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id> <!-- Firefox -->
         <em:minVersion>3.5</em:minVersion>
-        <em:maxVersion>4.0.*</em:maxVersion>
+        <em:maxVersion>5.0.*</em:maxVersion>
       </Description>
     </em:targetApplication>
   </Description>
