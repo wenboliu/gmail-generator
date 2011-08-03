@@ -33,7 +33,7 @@ gmailgenerator.composeTravelMail = function(event) {
 };
 
 gmailgenerator.loadingCheck = function(event) {
-    window.setTimeout(function(){   gmailgenerator.populateMailContent(); }, 3000);
+    window.setTimeout(function(){   gmailgenerator.populateMailContent(); }, 3500);
 };
 
 
