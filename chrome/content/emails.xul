@@ -38,7 +38,7 @@
 		
 		<hbox>
 			<button label="Add"
-					default="true" onclick="parent.gmailgenerator_Prefs.save();"/>
+					default="true" onclick="parent.gmailgenerator_Options.templatesAdd();"/>
 					
 			<button id="gmailgenerator-options-templates-modify-button"
 					label="Modify" onclick="parent.gmailgenerator_Prefs.alert();"/>

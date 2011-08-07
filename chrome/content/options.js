@@ -7,4 +7,9 @@ var gmailgenerator_Options = new function()
         var pageFrame = document.getElementById("gmailgenerator-options-iframe");
         pageFrame.setAttribute("src", pagesList.firstChild.value);
     }
+    
+    this.templatesAdd = function()
+    {
+      window.openDialog("chrome://gmailgenerator/content/email.xul", "template", "centerscreen,chrome,modal", this._sandbox);
+    }
 }
