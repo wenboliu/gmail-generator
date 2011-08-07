@@ -10,6 +10,7 @@
                 onload="gmailgenerator_Options.load();"
                 class="layout">
 	<script type="application/x-javascript" src="chrome://gmailgenerator/content/options.js"/>
+        <script type="application/x-javascript" src="chrome://gmailgenerator/content/prefs.js"/>
         
 	<hbox flex="1">
 		<listbox id="gmailgenerator-options-listbox">
@@ -18,7 +19,7 @@
 					image="chrome://gmailgenerator/skin/templates.png"
 					label="Template"
 					tooltiptext="template"
-					value="chrome://gmailgenerator/content/template.xul"/>
+					value="chrome://gmailgenerator/content/emails.xul"/>
 		</listbox>
 		
 		<iframe id="gmailgenerator-options-iframe"

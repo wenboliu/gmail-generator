@@ -38,11 +38,10 @@
 		
 		<hbox>
 			<button label="Add"
-					default="true"/>
+					default="true" onclick="parent.gmailgenerator_Prefs.save();"/>
 					
 			<button id="gmailgenerator-options-templates-modify-button"
-					disabled="true"
-					label="Modify"/>
+					label="Modify" onclick="parent.gmailgenerator_Prefs.alert();"/>
 					
 			<button id="gmailgenerator-options-templates-remove-button"
 					label="Remove"
