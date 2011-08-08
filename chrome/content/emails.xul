@@ -14,14 +14,12 @@
 					
 				<listhead>
 					<listheader label="Name"/>
-					<listheader label="Text Content"/>
-					<listheader label="Html Content"/>
+					<listheader label="Created Time"/>
 				</listhead>
 				
 				<listcols>
 					<listcol flex="1"/>
 					<listcol/>
-                                        <listcol/>
 				</listcols>
 			</listbox>
 			

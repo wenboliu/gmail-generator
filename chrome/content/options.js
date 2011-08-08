@@ -10,6 +10,6 @@ var gmailgenerator_Options = new function()
     
     this.templatesAdd = function()
     {
-      window.openDialog("chrome://gmailgenerator/content/email.xul", "template", "centerscreen,chrome,modal", this._sandbox);
+      window.openDialog("chrome://gmailgenerator/content/email.xul", "template", "centerscreen,chrome,modal");
     }
 }

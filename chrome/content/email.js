@@ -1,7 +1,7 @@
 function Email(){}
 
 Email.prototype.getId = function() {
-    return this.Id;
+    return this.id;
 }
 
 Email.prototype.setId = function(id) {
