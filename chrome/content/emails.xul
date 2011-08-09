@@ -39,7 +39,7 @@
 					default="true" onclick="parent.gmailgenerator_Options.templatesAdd();"/>
 					
 			<button id="gmailgenerator-options-templates-modify-button"
-					label="Modify" onclick="parent.gmailgenerator_Prefs.alert();"/>
+					label="Modify" onclick="parent.gmailgenerator_Options.templatesModify();"/>
 					
 			<button id="gmailgenerator-options-templates-remove-button"
 					label="Remove"

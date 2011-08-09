@@ -158,6 +158,43 @@ describe("EmailOperator", function() {
             
         });
         
+        describe("title with the timestamp", function(){
+            
+            beforeEach(function(){
+                email.setTitle("to@to.com");
+            });
+            
+            it(" which has overlap with the value added to names", function(){
+                var expectedNames = "";
+                var expectedToName = "";
+                var firstTime = true;
+                spyOn(gmailgenerator_Prefs, "getCharPref").andReturn(undefined);
+                spyOn(gmailgenerator_Prefs, "setCharPref").andCallFake(function(aName, aValue){
+                    if(firstTime) {
+                        expectedNames =  aValue;
+                        firstTime = false;
+                    } else {
+                        expectedName = aName;
+                    }
+                });
+                emailOperator.generateTimestamp();
+                emailOperator.saveToNames(email);
+                emailOperator.saveToTitle(email.getTitle());
+                expect(expectedNames).toContain(expectedName.replace("Title-", ""));  
+            });
+            
+            /*it(" successfully", function() {
+                spyOn(gmailgenerator_Prefs, "getCharPref").andReturn(undefined);
+                var expectedValue = "";
+                spyOn(gmailgenerator_Prefs, "setCharPref").andCallFake(function(aName, aValue){
+                    expectedValue = aValue;
+                });
+                emailOperator.saveToTo(email.getTo());
+                expect(expectedValue).toBe(email.getTo());
+            });*/
+            
+        });
+        
         describe("cc with the timestamp", function(){
             
             beforeEach(function(){
@@ -291,6 +328,9 @@ describe("EmailOperator", function() {
                 if ("To-" + email.getId() == aName) {
                     return email.getTo();
                 }
+                if ("Title-" + email.getId() == aName) {
+                    return email.getTitle();
+                }
                 if ("Cc-" + email.getId() == aName) {
                     return email.getCc();
                 }
@@ -306,6 +346,7 @@ describe("EmailOperator", function() {
             var gotEmail = emailOperator.getEmail(email.getId());
             expect(gotEmail.getName()).toBe(email.getName());
             expect(gotEmail.getTo()).toBe(email.getTo());
+            expect(gotEmail.getTitle()).toBe(email.getTitle());
             expect(gotEmail.getCc()).toBe(email.getCc());
             expect(gotEmail.getTextContent()).toBe(email.getTextContent());
             expect(gotEmail.getHtmlContent()).toBe(email.getHtmlContent());

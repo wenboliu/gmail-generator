@@ -3,6 +3,7 @@ var emailOperator = new function() {
     this.namesKey = "names";
     this.nameKey = "Name";
     this.toKey = "To";
+    this.titleKey = "Title";
     this.ccKey = "Cc";
     this.textContentKey = "TextContent";
     this.htmlContentKey = "HtmlContent";
@@ -24,7 +25,7 @@ var emailOperator = new function() {
     };
     
     this.save = function (email) {
-        if (email.getId()) {
+        if (email.getId() && email.getId() != "") {
             this.timestamp = email.getId();
         } else {
             this.generateTimestamp();
@@ -36,6 +37,7 @@ var emailOperator = new function() {
         this.saveToCc(email.getCc());
         this.saveToTextContent(email.getTextContent());
         this.saveToHtmlContent(email.getHtmlContent());
+        this.saveToTitle(email.getTitle());
     };
     
     this.deleteEmail = function(id) {
@@ -56,6 +58,7 @@ var emailOperator = new function() {
         email.setName(this.getPref(this.getFieldValueWithTimestamp(this.nameKey)));
         email.setTo(this.getPref(this.getFieldValueWithTimestamp(this.toKey)));
         email.setCc(this.getPref(this.getFieldValueWithTimestamp(this.ccKey)));
+        email.setTitle(this.getPref(this.getFieldValueWithTimestamp(this.titleKey)));
         email.setTextContent(this.getPref(this.getFieldValueWithTimestamp(this.textContentKey)));
         email.setHtmlContent(this.getPref(this.getFieldValueWithTimestamp(this.htmlContentKey)));
         return email;
@@ -76,6 +79,10 @@ var emailOperator = new function() {
     
     this.saveToTo = function(to) {
        this.savePref(this.getFieldValueWithTimestamp(this.toKey), to);
+    }
+    
+    this.saveToTitle = function(title) {
+       this.savePref(this.getFieldValueWithTimestamp(this.titleKey), title);
     }
     
     this.saveToCc = function(cc) {

@@ -28,12 +28,19 @@ var gmailgenerator_Prefs = new function()
   
   this.getCharPref = function(aName)
   {
-    return this._prefBranch.getCharPref(aName);
+    try {
+      return this._prefBranch.getCharPref(aName);      
+    } catch (e) {
+      return "";  
+    }
   }
   
   this.setCharPref = function(aName, aValue)
   {
-    this._prefBranch.setCharPref(aName, aValue);
+    try {
+      this._prefBranch.setCharPref(aName, aValue);
+    } catch(e) {
+    }
   }
   
   this.getIntPref = function(aName)

@@ -16,6 +16,14 @@ Email.prototype.setName = function(name) {
     this.name = name;
 }
 
+Email.prototype.getTitle = function() {
+    return this.title;
+}
+
+Email.prototype.setTitle = function(title) {
+    this.title = title;
+}
+
 Email.prototype.getTo = function() {
     return this.to;
 }

@@ -2,11 +2,17 @@
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <!DOCTYPE prefwindow SYSTEM "chrome://gmailgenerator/locale/options.dtd">
 
-<dialog id="gmanager-options-account"
+<dialog id="gmailgenerator-options-email"
 		title="Gmail Template"
 		buttons="accept, cancel"
+		onload="emailPresenter.load();"
+		ondialogaccept="emailPresenter.save();"
 		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-		
+	<script type="application/x-javascript" src="chrome://gmailgenerator/content/prefs.js"/>
+	<script type="application/x-javascript" src="chrome://gmailgenerator/content/email.js"/>	
+	<script type="application/x-javascript" src="chrome://gmailgenerator/content/email_operator.js"/>
+	<script type="application/x-javascript" src="chrome://gmailgenerator/content/email_presenter.js"/>	
+	
 	<tabbox>
 		<tabs>
 			<tab label="General"/>
@@ -28,16 +34,35 @@
 						
 						<rows>
 							<row align="center">
-								<label value="To:"
-									control="gmanager-template-to"/>
+								<label value="Name:"
+									control="gmailgenerator-template-name"/>
 									
-								<textbox id="gmanager-template-to"/>
+								<textbox id="gmailgenerator-template-name"/>
+							</row>
+							<row align="center">
+								<label value="Title:"
+									control="gmailgenerator-template-title"/>
+									
+								<textbox id="gmailgenerator-template-title"/>
+							</row>
+							<row align="center">
+								<label value="To:"
+									control="gmailgenerator-template-to"/>
+									
+								<textbox id="gmailgenerator-template-to"/>
+								
 							</row>
 							<row align="center">
 								<label value="Cc:"
-									control="gmanager-template-cc"/>
+									control="gmailgenerator-template-cc"/>
 									
-								<textbox id="gmanager-template-cc"/>
+								<textbox id="gmailgenerator-template-cc"/>
+							</row>
+							<row align="center">
+								<label value="Created Time:"
+									control="gmailgenerator-template-title"/>
+									
+								<textbox id="gmailgenerator-template-id" readonly="true"/>
 							</row>
 						</rows>
 					</grid>
@@ -50,7 +75,7 @@
 					<caption label="Email Content"/>
 					
 					<hbox align="center">
-                                            <textbox multiline="true" id="gmanager-template-text-content" width="500" height="300"/>
+                                            <textbox multiline="true" id="gmailgenerator-template-text-content" width="500" height="300"/>
 					</hbox>
 				</groupbox>
 				
@@ -62,7 +87,7 @@
 					<caption label="Email Content"/>
 					
 					<hbox align="center">
-                                            <textbox multiline="true" id="gmanager-template-html-content" width="500" height="300"/>
+                                            <textbox multiline="true" id="gmailgenerator-template-html-content" width="500" height="300"/>
 					</hbox>
 				</groupbox>
 				
