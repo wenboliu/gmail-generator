@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://gmailgenerator/content/options.css" type="text/css"?>
 <?xml-stylesheet href="chrome://gmailgenerator/skin/overlay.css" type="text/css"?>
 <!DOCTYPE prefwindow SYSTEM "chrome://gmailgenerator/locale/options.dtd">
 <dialog id="gmailgenerator-preferences"
@@ -9,10 +10,10 @@
 		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
                 onload="gmailgenerator_Options.load();"
                 class="layout">
-	<script type="application/x-javascript" src="chrome://gmailgenerator/content/options.js"/>
         <script type="application/x-javascript" src="chrome://gmailgenerator/content/prefs.js"/>
 	<script type="application/x-javascript" src="chrome://gmailgenerator/content/email.js"/>	
 	<script type="application/x-javascript" src="chrome://gmailgenerator/content/email_operator.js"/>
+	<script type="application/x-javascript" src="chrome://gmailgenerator/content/options.js"/>
         
 	<hbox flex="1">
 		<listbox id="gmailgenerator-options-listbox">

@@ -1,0 +1,8 @@
+#gmailgenerator-options-templates-listbox > listitem {
+	-moz-binding: url("chrome://gmailgenerator/content/options.xml#gmailgenerator-templates-listitem") !important;
+}
+
+#gmailgenerator-options-templates-listbox > listitem label {
+	margin: 0;
+	padding: 0;
+}

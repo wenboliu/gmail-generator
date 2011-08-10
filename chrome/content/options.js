@@ -13,12 +13,15 @@ var gmailgenerator_Options = new function()
         var pageDocument = document.getElementById("gmailgenerator-options-iframe").contentDocument;
         var emails = emailOperator.getEmails();
         var emailList = pageDocument.getElementById("gmailgenerator-options-templates-listbox");
+        while (emailList.getRowCount() > 0){
+          emailList.removeItemAt(0);
+        }
         for(var i=0; i<emails.length; i++) {
-            if (emails[i].getName() && emails[i].getName() != "") {
+            if (emails[i].getName() && emails[i].getName() != "") {      
                 var emailItem = pageDocument.createElement("listitem");
                 emailItem.setAttribute("name", emails[i].getName());
                 emailItem.setAttribute("id", emails[i].getId());
-                emailList.appendChild(accountItem);
+                emailList.appendChild(emailItem);
             }
         }
     }
