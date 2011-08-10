@@ -12,7 +12,8 @@
 		
 		<hbox flex="1">
 			<listbox id="gmailgenerator-options-templates-listbox"
-					flex="1">
+					flex="1"
+					onselect="parent.gmailgenerator_Options.selectEmail();">
 					
 				<listhead>
 					<listheader label="Name"/>
@@ -41,7 +42,8 @@
 					default="true" onclick="parent.gmailgenerator_Options.templatesAdd();"/>
 					
 			<button id="gmailgenerator-options-templates-modify-button"
-					label="Modify" onclick="parent.gmailgenerator_Options.templatesModify();"/>
+					label="Modify" onclick="parent.gmailgenerator_Options.templatesModify();"
+					disabled="true"/>
 					
 			<button id="gmailgenerator-options-templates-remove-button"
 					label="Remove"

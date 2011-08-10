@@ -10,9 +10,9 @@ var gmailgenerator_Options = new function()
     }
     
     this.loadEmails = function() {
-        var pageDocument = document.getElementById("gmailgenerator-options-iframe").contentDocument;
+        var pageDocument = this.getContentDocument();
         var emails = emailOperator.getEmails();
-        var emailList = pageDocument.getElementById("gmailgenerator-options-templates-listbox");
+        var emailList = this.getListBox(pageDocument);
         while (emailList.getRowCount() > 0){
           emailList.removeItemAt(0);
         }
@@ -26,6 +26,24 @@ var gmailgenerator_Options = new function()
         }
     }
     
+    this.selectEmail = function() {
+        var pageDocument = this.getContentDocument();
+        var emailsList = this.getListBox(pageDocument);
+    
+        pageDocument.getElementById("gmailgenerator-options-templates-move-up-button").disabled = (emailsList.selectedIndex == 0)
+        pageDocument.getElementById("gmailgenerator-options-templates-move-down-button").disabled = (emailsList.selectedIndex == (emailsList.getRowCount() - 1));
+        pageDocument.getElementById("gmailgenerator-options-templates-modify-button").disabled = (emailsList.selectedCount == 0);
+        pageDocument.getElementById("gmailgenerator-options-templates-remove-button").disabled = (emailsList.selectedCount == 0);    
+    }
+    
+    this.getContentDocument = function() {
+        return document.getElementById("gmailgenerator-options-iframe").contentDocument;
+    }
+    
+    this.getListBox = function(contentDocument) {
+        return contentDocument.getElementById("gmailgenerator-options-templates-listbox");
+    }
+    
     this.templatesAdd = function()
     {
       window.openDialog("chrome://gmailgenerator/content/email.xul", "template", "centerscreen,chrome,modal");
@@ -33,6 +51,9 @@ var gmailgenerator_Options = new function()
     
     this.templatesModify = function()
     {
-      window.openDialog("chrome://gmailgenerator/content/email.xul", "template", "centerscreen,chrome,modal","2011-7-3-7-44-50-521");
+        var pageDocument = this.getContentDocument();
+        var emailsList = this.getListBox(pageDocument);
+        var email = emailsList.selectedItem;
+        window.openDialog("chrome://gmailgenerator/content/email.xul", "template", "centerscreen,chrome,modal", email.id);
     }
 }
