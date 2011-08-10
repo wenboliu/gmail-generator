@@ -2,10 +2,25 @@ var gmailgenerator_Options = new function()
 {
     this.load = function()
     {
-        
+        gmailgenerator_Prefs.init();
+        emailOperator.init(gmailgenerator_Prefs);
         var pagesList = document.getElementById("gmailgenerator-options-listbox");
         var pageFrame = document.getElementById("gmailgenerator-options-iframe");
         pageFrame.setAttribute("src", pagesList.firstChild.value);
+    }
+    
+    this.loadEmails = function() {
+        var pageDocument = document.getElementById("gmailgenerator-options-iframe").contentDocument;
+        var emails = emailOperator.getEmails();
+        var emailList = pageDocument.getElementById("gmailgenerator-options-templates-listbox");
+        for(var i=0; i<emails.length; i++) {
+            if (emails[i].getName() && emails[i].getName() != "") {
+                var emailItem = pageDocument.createElement("listitem");
+                emailItem.setAttribute("name", emails[i].getName());
+                emailItem.setAttribute("id", emails[i].getId());
+                emailList.appendChild(accountItem);
+            }
+        }
     }
     
     this.templatesAdd = function()

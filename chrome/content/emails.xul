@@ -3,6 +3,7 @@
 <!DOCTYPE prefwindow SYSTEM "chrome://gmailgenerator/locale/options.dtd">
 
 <page id="gmailgenerator-options-templates"
+        onload="parent.gmailgenerator_Options.loadEmails();"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 	
 	<groupbox>

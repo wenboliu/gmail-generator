@@ -11,6 +11,8 @@
                 class="layout">
 	<script type="application/x-javascript" src="chrome://gmailgenerator/content/options.js"/>
         <script type="application/x-javascript" src="chrome://gmailgenerator/content/prefs.js"/>
+	<script type="application/x-javascript" src="chrome://gmailgenerator/content/email.js"/>	
+	<script type="application/x-javascript" src="chrome://gmailgenerator/content/email_operator.js"/>
         
 	<hbox flex="1">
 		<listbox id="gmailgenerator-options-listbox">
