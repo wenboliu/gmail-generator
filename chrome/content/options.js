@@ -10,21 +10,51 @@ var gmailgenerator_Options = new function()
         pageFrame.setAttribute("src", "chrome://gmailgenerator/content/emails.xul");
     }
     
+    this.loadEmailOnPageLoad = function() {
+        window.setTimeout(this.loadEmails, 1000);
+    }
+    
     this.loadEmails = function() {
         var pageDocument = this.getContentDocument();
-        var emails = emailOperator.getEmails();
+        if (this.loadEmailListBox(pageDocument, emailOperator.getEmails()) == 0 && confirm("Are you want to load default email template?")) {
+            this.loadDefaultTemplate();
+            this.loadEmailListBox(pageDocument, emailOperator.getEmails());
+        }
+    }
+    
+    this.loadEmailListBox = function(pageDocument, emails) {
         var emailList = this.getListBox(pageDocument);
         while (emailList.getRowCount() > 0){
           emailList.removeItemAt(0);
         }
+        var count = 0;
         for(var i=0; i<emails.length; i++) {
             if (emails[i].getName() && emails[i].getName() != "") {      
                 var emailItem = pageDocument.createElement("listitem");
                 emailItem.setAttribute("name", emails[i].getName());
                 emailItem.setAttribute("id", emails[i].getId());
                 emailList.appendChild(emailItem);
+                count ++;
             }
         }
+        return count;
+    }
+    
+    this.loadDefaultTemplate = function() {
+        emailOperator.save(this.createTravelEmail("domestic"));
+        emailOperator.save(this.createTravelEmail("international"));
+    }
+    
+    this.createTravelEmail = function(travelType) {
+        var template = new Template(travelType);
+        var email = new Email();
+        email.setName(travelType + " travel");
+        email.setTo(template.getEmailTo());
+        email.setCc(template.getEmailCc());
+        email.setTitle(template.getSubject());
+        email.setTextContent(template.getContent());
+        email.setHtmlContent(template.getHTMLContent());
+        return email;
     }
     
     this.selectEmail = function() {
