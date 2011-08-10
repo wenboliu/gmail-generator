@@ -10,6 +10,7 @@ gmailgenerator.showFirefoxContextMenu = function(event) {
   // show or hide the menuitem based on what the context menu is on
   document.getElementById("context-gmailgenerator-domestic").hidden = gmailgenerator.isHiddenContextMenu(event);
   document.getElementById("context-gmailgenerator-international").hidden = gmailgenerator.isHiddenContextMenu(event);
+  document.getElementById("context-gmailgenerator").hidden = false;
 };
 
 
@@ -67,6 +68,29 @@ gmailgenerator.populateMailContent = function() {
     gmailgenerator.loadingCheck();
     
 };
+
+gmailgenerator.buildMenu = function(aPopup){
+    gmailgenerator.clearKids(aPopup);
+    aPopup.appendChild(gmailgenerator.createMenuItem("test", "alert('test');"));
+    aPopup.appendChild(document.createElement("menuseparator"));
+    return true;
+};
+
+gmailgenerator.createMenuItem = function(label, command) {
+    var menuitem = document.createElement("menuitem");
+    menuitem.setAttribute("label", label);
+    menuitem.setAttribute("oncommand", command);
+    return menuitem;  
+};
+
+gmailgenerator.clearKids = function(aNode)
+{
+  if (aNode && aNode instanceof Node)
+  {
+    while (aNode.hasChildNodes())
+      aNode.removeChild(aNode.lastChild);
+  }
+}
 
 
 window.addEventListener("load", function () {gmailgenerator.onFirefoxLoad();}, false);

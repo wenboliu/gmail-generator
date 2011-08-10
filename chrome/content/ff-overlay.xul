@@ -5,6 +5,8 @@
   <script src="template.js"/>
   <script src="overlay.js"/>
   <script src="ff-overlay.js"/>
+  <script src="email_operator.js"/>
+  <script src="prefs.js"/>
 
   <stringbundleset id="stringbundleset">
     <stringbundle id="gmailgenerator-strings" src="chrome://gmailgenerator/locale/overlay.properties"/>
@@ -20,6 +22,9 @@
               accesskey="&gmailgeneratorContext.international.accesskey;"
               insertafter="context-stop"
               oncommand="gmailgenerator.onInternationalCommand(event)" insertbefore="context-sep-properties"/>
+    <menu id="context-gmailgenerator" label="Gmail Templates" insertafter="context-stop" insertbefore="context-sep-properties">
+        <menupopup onpopupshowing="gmailgenerator.buildMenu(this);"/>
+    </menu>
   </popup>
 
 
