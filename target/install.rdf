@@ -3,13 +3,13 @@
   <Description about="urn:mozilla:install-manifest">
     <em:id>wbliu@thoughtworks.com</em:id>
     <em:type>2</em:type>
-    <em:name>Travel Request</em:name>
-    <em:version>0.1</em:version>
+    <em:name>Gmail Template Manager</em:name>
+    <em:version>1.0-beta</em:version>
     <em:creator>Wenbo Liu</em:creator>
     <em:contributor></em:contributor>
-    <em:iconURL>chrome://gmailgenerator/content/Plane.png</em:iconURL>
+    <em:iconURL>chrome://gmailgenerator/content/email.png</em:iconURL>
     <em:description>generate gmail according to template</em:description>
- <!--   <em:optionsURL>chrome://gmailgenerator/content/options.xul</em:optionsURL> -->
+    <em:optionsURL>chrome://gmailgenerator/content/options.xul</em:optionsURL>
     <em:targetApplication>
       <Description>
         <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id> <!-- Firefox -->

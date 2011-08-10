@@ -4,7 +4,7 @@
 <?xml-stylesheet href="chrome://gmailgenerator/skin/overlay.css" type="text/css"?>
 <!DOCTYPE prefwindow SYSTEM "chrome://gmailgenerator/locale/options.dtd">
 <dialog id="gmailgenerator-preferences"
-		title="Gmail Templates Manage"
+		title="Gmail Templates Management"
 		persist="screenX, screenY"
 		buttons="accept, cancel"
 		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
