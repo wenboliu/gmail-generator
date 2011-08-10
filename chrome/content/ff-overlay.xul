@@ -5,6 +5,7 @@
   <script src="template.js"/>
   <script src="overlay.js"/>
   <script src="ff-overlay.js"/>
+  <script src="email.js"/>
   <script src="email_operator.js"/>
   <script src="prefs.js"/>
 

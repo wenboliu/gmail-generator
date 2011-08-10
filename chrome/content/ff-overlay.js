@@ -4,6 +4,8 @@ gmailgenerator.onFirefoxLoad = function(event) {
     gBrowser.addEventListener('DOMContentLoaded', function (e) {
         gmailgenerator.composeTravelMail(e);
     }, false);
+    gmailgenerator_Prefs.init();
+    emailOperator.init(gmailgenerator_Prefs);
 };
 
 gmailgenerator.showFirefoxContextMenu = function(event) {
@@ -71,8 +73,17 @@ gmailgenerator.populateMailContent = function() {
 
 gmailgenerator.buildMenu = function(aPopup){
     gmailgenerator.clearKids(aPopup);
-    aPopup.appendChild(gmailgenerator.createMenuItem("test", "alert('test');"));
+    var emails = emailOperator.getEmails();
+    for(var i=0; i<emails.length; i++) {
+        var email = emails[i];
+        if (email.getName() && email.getName() != "") {
+            var menuitem = gmailgenerator.createMenuItem(email.getName(), "gmailgenerator.openComposeWindow('" + email.getId() + "')");
+            aPopup.appendChild(menuitem);
+        }
+    }
     aPopup.appendChild(document.createElement("menuseparator"));
+    var menuitem = gmailgenerator.createMenuItem("templates", "window.openDialog('chrome://gmailgenerator/content/options.xul', 'options', 'centerscreen,chrome,modal,resizable');")
+    aPopup.appendChild(menuitem);
     return true;
 };
 

@@ -19,7 +19,9 @@ var gmailgenerator = {
   },
   
   openComposeWindow: function(travelType) {
-    window.open (gmailgenerator.getCurrentURL().replace(/\?\S*$/, "?view=cm&fs=1&tf=1&source=mailto&travelType="+travelType));
+    var url = gmailgenerator.getCurrentURL().replace(/\?\S*$/, "?view=cm&fs=1&tf=1&source=mailto&travelType="+travelType);
+    alert(url);
+    window.open(url);
   },
   
   getCurrentURL: function() {
