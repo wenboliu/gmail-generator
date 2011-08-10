@@ -46,7 +46,8 @@ var gmailgenerator_Options = new function()
     
     this.templatesAdd = function()
     {
-      window.openDialog("chrome://gmailgenerator/content/email.xul", "template", "centerscreen,chrome,modal");
+        window.openDialog("chrome://gmailgenerator/content/email.xul", "template", "centerscreen,chrome,modal");
+        this.loadEmails();
     }
     
     this.templatesModify = function()
@@ -54,6 +55,20 @@ var gmailgenerator_Options = new function()
         var pageDocument = this.getContentDocument();
         var emailsList = this.getListBox(pageDocument);
         var email = emailsList.selectedItem;
-        window.openDialog("chrome://gmailgenerator/content/email.xul", "template", "centerscreen,chrome,modal", email.id);
+        if (email) {
+            window.openDialog("chrome://gmailgenerator/content/email.xul", "template", "centerscreen,chrome,modal", email.id);
+            this.loadEmails();
+        }
+    }
+    
+    this.templatesDelete = function()
+    {
+        var pageDocument = this.getContentDocument();
+        var emailsList = this.getListBox(pageDocument);
+        var email = emailsList.selectedItem;
+        if (email && confirm("Are you sure to delete " + email.name)) {
+            emailOperator.deleteEmail(email.id);
+            this.loadEmails();
+        }
     }
 }

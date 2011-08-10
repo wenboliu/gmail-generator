@@ -17,7 +17,7 @@
 					
 				<listhead>
 					<listheader label="Name"/>
-					<listheader label="Flag"/>
+					<listheader label="Identifier"/>
 				</listhead>
 				
 				<listcols>
@@ -47,7 +47,7 @@
 					
 			<button id="gmailgenerator-options-templates-remove-button"
 					label="Remove"
-					disabled="true"/>
+					disabled="true" onclick="parent.gmailgenerator_Options.templatesDelete();"/>
 		</hbox>
 	</groupbox>
 </page>
