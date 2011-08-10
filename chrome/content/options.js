@@ -4,9 +4,10 @@ var gmailgenerator_Options = new function()
     {
         gmailgenerator_Prefs.init();
         emailOperator.init(gmailgenerator_Prefs);
-        var pagesList = document.getElementById("gmailgenerator-options-listbox");
+        //var pagesList = document.getElementById("gmailgenerator-options-listbox");
         var pageFrame = document.getElementById("gmailgenerator-options-iframe");
-        pageFrame.setAttribute("src", pagesList.firstChild.value);
+        //pageFrame.setAttribute("src", pagesList.firstChild.value);
+        pageFrame.setAttribute("src", "chrome://gmailgenerator/content/emails.xul");
     }
     
     this.loadEmails = function() {
