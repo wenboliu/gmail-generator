@@ -42,7 +42,8 @@ gmailgenerator.loadingCheck = function(event) {
 
 
 gmailgenerator.populateMailContent = function() {
-    var template = gmailgenerator.getTemplate(gmailgenerator.travelType);
+    //var template = gmailgenerator.getTemplate(gmailgenerator.travelType);
+    var template = emailOperator.getEmail(gmailgenerator.travelType);
     var canvasFrame = gmailgenerator.getCanvasFrame();
     if (canvasFrame) {
         var canvasDoc = canvasFrame.contentDocument;
@@ -51,14 +52,14 @@ gmailgenerator.populateMailContent = function() {
               if (toElem) {
                   canvasDoc.getElementById(":rl").childNodes[1].style.display = "";
     //              canvasDoc.getElementById(":re").style.display = "none";
-                  toElem.value = template.getEmailTo();
-                  canvasDoc.getElementById(":qn").value = template.getEmailCc();
-                  canvasDoc.getElementById(":ql").value = template.getSubject();
+                  toElem.value = template.getTo();
+                  canvasDoc.getElementById(":qn").value = template.getCc();
+                  canvasDoc.getElementById(":ql").value = template.getTitle();
                   try{
-                    canvasDoc.getElementById(":qa").contentDocument.getElementById(":qa").innerHTML = "<br>" + template.getHTMLContent();
+                    canvasDoc.getElementById(":qa").contentDocument.getElementById(":qa").innerHTML = "<br>" + template.getHtmlContent();
                   }catch(e) {
                       try {
-                        canvasDoc.getElementById(":pp").value = template.getContent();
+                        canvasDoc.getElementById(":pp").value = template.getTextContent();
                       }catch(e) {
                         gmailgenerator.loadingCheck();  
                       }
