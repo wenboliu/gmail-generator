@@ -20,7 +20,6 @@ var gmailgenerator = {
   
   openComposeWindow: function(travelType) {
     var url = gmailgenerator.getCurrentURL().replace(/\?\S*$/, "?view=cm&fs=1&tf=1&source=mailto&travelType="+travelType);
-    alert(url);
     window.open(url);
   },
   

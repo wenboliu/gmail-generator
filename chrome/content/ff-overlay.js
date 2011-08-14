@@ -10,8 +10,8 @@ gmailgenerator.onFirefoxLoad = function(event) {
 
 gmailgenerator.showFirefoxContextMenu = function(event) {
   // show or hide the menuitem based on what the context menu is on
-  document.getElementById("context-gmailgenerator-domestic").hidden = gmailgenerator.isHiddenContextMenu(event);
-  document.getElementById("context-gmailgenerator-international").hidden = gmailgenerator.isHiddenContextMenu(event);
+  document.getElementById("context-gmailgenerator-domestic").hidden = true;
+  document.getElementById("context-gmailgenerator-international").hidden = true;
   document.getElementById("context-gmailgenerator").hidden = gmailgenerator.isHiddenContextMenu(event);
 };
 
@@ -48,18 +48,41 @@ gmailgenerator.populateMailContent = function() {
     if (canvasFrame) {
         var canvasDoc = canvasFrame.contentDocument;
         if (canvasDoc) {
-              var toElem = canvasDoc.getElementById(":qo");
-              if (toElem) {
-                  canvasDoc.getElementById(":rl").childNodes[1].style.display = "";
+              var toElem = canvasDoc.getElementsByName("to");
+              if (toElem.length > 0) {
+                  canvasDoc.getElementById(":rf").childNodes[1].style.display = "";
     //              canvasDoc.getElementById(":re").style.display = "none";
-                  toElem.value = template.getTo();
-                  canvasDoc.getElementById(":qn").value = template.getCc();
-                  canvasDoc.getElementById(":ql").value = template.getTitle();
+                  toElem[0].value = template.getTo();
+                  var ccElem = canvasDoc.getElementsByName("cc");
+                  ccElem[0].value = template.getCc();
+                  var subjectElem = canvasDoc.getElementsByName("subject");
+                  subjectElem[0].value = template.getTitle();
                   try{
-                    canvasDoc.getElementById(":qa").contentDocument.getElementById(":qa").innerHTML = "<br>" + template.getHtmlContent();
+                    var iframes = canvasDoc.getElementsByTagName("iframe");
+                    var find = false;
+                    
+                    if (iframes.length > 0) {
+                        for(var i=0; i < iframes.length; i++){
+                            if(iframes[i].className.indexOf("editable") > -1) {
+                                var bodyElem = iframes[i].contentDocument.getElementsByTagName("body");
+								bodyElem[0].innerHTML = "<br>" + template.getHtmlContent();
+                                find = true;
+                            }
+                        }   
+                    }
+                    if (!find) {
+                       try {
+                        var bodyElem = canvasDoc.getElementsByName("body");
+                        bodyElem[0].value = template.getTextContent();
+                      }catch(e) {
+                        gmailgenerator.loadingCheck();  
+                      } 
+                    }
+                    //contentDocument.getElementById(":qa").innerHTML = "<br>" + template.getHtmlContent();
                   }catch(e) {
                       try {
-                        canvasDoc.getElementById(":pp").value = template.getTextContent();
+                        var bodyElem = canvasDoc.getElementsByName("body");
+                        bodyElem[0].value = template.getTextContent();
                       }catch(e) {
                         gmailgenerator.loadingCheck();  
                       }
