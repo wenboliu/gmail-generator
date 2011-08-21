@@ -18,17 +18,6 @@ Template.prototype.getEmailCc = function() {
 
 Template.prototype.getSubject = function() {
         var subject = "";
-        if (this.travelType != "domestic") {
-                subject = subject + "[DOMEST-TRVL]"
-        } else {
-                subject = subject + "[INTERN-TRVL]"
-        }
-        subject = subject + ":Travel Request"
-        return subject;
-};
-
-Template.prototype.getSubject = function() {
-        var subject = "";
         if (this.travelType == "domestic") {
                 subject = subject + "[DOMEST-TRVL]"
         } else {
@@ -47,7 +36,6 @@ Template.prototype.getContent = function() {
                                   + "Date of Arrival: <ARRIVAL DATE>\n"
                                   + "Date of Departure: <DEPARTURE DATE>\n"
                                   + "Destination: <DESTINATION>";
-        return subject;
 };
 
 Template.prototype.getHTMLContent = function() {
@@ -58,11 +46,63 @@ Template.prototype.getHTMLContent = function() {
                                   + "Date of Arrival: &lt;ARRIVAL DATE&gt;<br>"
                                   + "Date of Departure: &lt;DEPARTURE DATE&gt;<br>"
                                   + "Destination: &lt;DESTINATION&gt;";
+};
+
+//=========================================================================
+
+function Leave(leaveType) {
+        this.leaveType = leaveType;
+};
+
+Leave.prototype.getEmailTo = function() {
+        return "china_time_off@thoughtworks.com";
+};
+
+Leave.prototype.getEmailCc = function() {
+        return "<YOUR PM>";
+};
+
+Leave.prototype.getSubject = function() {
+        var subject = "[LEAVE-REQUEST]:";
+        if (this.leaveType == "leave1") {
+                subject = subject + "<Name> will take <Leave Type:annual,sick,marriage,bereavement,maternity,paternity> leave on <leave date>."
+        } else {
+                subject = subject + "<Name> will take <Leave Type:annual,sick,marriage,bereavement,maternity,paternity> leave from <leave start date> to  <leave end date>."
+        }
         return subject;
 };
 
+Leave.prototype.getContent = function() {
+        var content = "Hi, Admin Team\n\r"
+                      + "I will take <Leave Type:annual,sick,marriage,bereavement,maternity,paternity> leave ";
+        if (this.leaveType == "leave1") {
+                content = content + "on <leave date>."
+        } else {
+                content = content + "from <leave start date> to  <leave end date>."
+        }
+        return content;
+};
+
+Leave.prototype.getHTMLContent = function() {
+        var content = "Hi, Admin Team<br><br>"
+                      + "I will take <Leave Type:annual,sick,marriage,bereavement,maternity,paternity> leave ";
+        if (this.leaveType == "leave1") {
+                content = content + "on &lt;leave date&gt;.<br><br>"
+        } else {
+                content = content + "from &lt;leave start date&gt; to  &lt;leave end date&gt;.<br><br>"
+        }
+        return content;
+};
+
+
+//=========================================================================
+
 function EmailTemplate(travelType){
-        this.template = new Template(travelType);
+        if (travelType == "international" || travelType == "domestic") { 
+                this.template = new Template(travelType);
+        } else if (travelType == "leave1" || travelType == "leave2") {
+                this.template = new Leave(travelType);  
+        }
 }
 
 EmailTemplate.prototype.getTitle = function() {

@@ -4,7 +4,7 @@
     <em:id>wbliu@thoughtworks.com</em:id>
     <em:type>2</em:type>
     <em:name>Gmail Template Manager</em:name>
-    <em:version>1.0-beta</em:version>
+    <em:version>1.0</em:version>
     <em:creator>Wenbo Liu</em:creator>
     <em:contributor></em:contributor>
     <em:iconURL>chrome://gmailgenerator/content/email.png</em:iconURL>

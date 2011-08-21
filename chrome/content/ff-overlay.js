@@ -44,7 +44,7 @@ gmailgenerator.loadingCheck = function(event) {
 gmailgenerator.populateMailContent = function() {
     //var template = gmailgenerator.getTemplate(gmailgenerator.travelType);
     var template;
-    if (gmailgenerator.travelType == "international" || gmailgenerator.travelType == "domestic") {
+    if (gmailgenerator.isBuildIn(gmailgenerator.travelType)) {
        template = gmailgenerator.getTemplate(gmailgenerator.travelType);  
     }else {
        template = emailOperator.getEmail(gmailgenerator.travelType); 
@@ -100,10 +100,28 @@ gmailgenerator.populateMailContent = function() {
     
 };
 
+gmailgenerator.getBuildInIds = function() {
+    return ["international", "domestic", "leave1", "leave2"];
+}
+
+gmailgenerator.getBuildInNames = function() {
+    return ["International Travel", "Domestic Travel", "Leave Request (1 Day)", "Leave Request (1+ Days)"];
+}
+
+gmailgenerator.isBuildIn = function(buildInId) {
+    var buildInIds = gmailgenerator.getBuildInIds();
+    for(var i=0; i< buildInIds.length; i++) {
+        if (buildInId == buildInIds[i]) {
+            return true;
+        }
+    }
+    return false;
+}
+
 gmailgenerator.buildMenu = function(aPopup){
     gmailgenerator.clearKids(aPopup);
-    var travelTypes = ["International Travel", "Domestic Travel"];
-    var emailIds = ["international", "domestic"];
+    var travelTypes = gmailgenerator.getBuildInNames();
+    var emailIds = gmailgenerator.getBuildInIds();
     for(var i=0; i< travelTypes.length; i++) {
         var menuitem = gmailgenerator.createMenuItem(travelTypes[i], "gmailgenerator.openComposeWindow('" + emailIds[i] + "')");
         aPopup.appendChild(menuitem);
