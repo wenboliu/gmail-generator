@@ -43,7 +43,12 @@ gmailgenerator.loadingCheck = function(event) {
 
 gmailgenerator.populateMailContent = function() {
     //var template = gmailgenerator.getTemplate(gmailgenerator.travelType);
-    var template = emailOperator.getEmail(gmailgenerator.travelType);
+    var template;
+    if (gmailgenerator.travelType == "international" || gmailgenerator.travelType == "domestic") {
+       template = gmailgenerator.getTemplate(gmailgenerator.travelType);  
+    }else {
+       template = emailOperator.getEmail(gmailgenerator.travelType); 
+    }
     var canvasFrame = gmailgenerator.getCanvasFrame();
     if (canvasFrame) {
         var canvasDoc = canvasFrame.contentDocument;
@@ -65,7 +70,7 @@ gmailgenerator.populateMailContent = function() {
                         for(var i=0; i < iframes.length; i++){
                             if(iframes[i].className.indexOf("editable") > -1) {
                                 var bodyElem = iframes[i].contentDocument.getElementsByTagName("body");
-								bodyElem[0].innerHTML = "<br>" + template.getHtmlContent();
+				bodyElem[0].innerHTML = "<br>" + template.getHtmlContent();
                                 find = true;
                             }
                         }   
@@ -97,6 +102,12 @@ gmailgenerator.populateMailContent = function() {
 
 gmailgenerator.buildMenu = function(aPopup){
     gmailgenerator.clearKids(aPopup);
+    var travelTypes = ["International Travel", "Domestic Travel"];
+    var emailIds = ["international", "domestic"];
+    for(var i=0; i< travelTypes.length; i++) {
+        var menuitem = gmailgenerator.createMenuItem(travelTypes[i], "gmailgenerator.openComposeWindow('" + emailIds[i] + "')");
+        aPopup.appendChild(menuitem);
+    }
     var emails = emailOperator.getEmails();
     for(var i=0; i<emails.length; i++) {
         var email = emails[i];

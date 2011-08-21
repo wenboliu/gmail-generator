@@ -11,7 +11,7 @@ Template.prototype.getEmailCc = function() {
         if (this.travelType != "domestic") {
                 emailCC = emailCC + ",international_travel_-_china@thoughtworks.com";
         } else {
-                emailCC = emailCC + ",lifang.lei1122@gmail.com";
+                emailCC = emailCC + ",bbduan@thoughtworks.com";
         }
         return emailCC;
 };
@@ -60,3 +60,27 @@ Template.prototype.getHTMLContent = function() {
                                   + "Destination: &lt;DESTINATION&gt;";
         return subject;
 };
+
+function EmailTemplate(travelType){
+        this.template = new Template(travelType);
+}
+
+EmailTemplate.prototype.getTitle = function() {
+    return this.template.getSubject();
+}
+
+EmailTemplate.prototype.getTo = function() {
+    return this.template.getEmailTo();
+}
+
+EmailTemplate.prototype.getCc = function() {
+    return this.template.getEmailCc();
+}
+
+EmailTemplate.prototype.getTextContent = function() {
+    return this.template.getContent();
+}
+
+EmailTemplate.prototype.getHtmlContent = function() {
+    return this.template.getHTMLContent();
+}

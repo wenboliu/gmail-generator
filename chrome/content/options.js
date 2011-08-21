@@ -11,7 +11,7 @@ var gmailgenerator_Options = new function()
     }
     
     this.loadEmailOnPageLoad = function() {
-        window.setTimeout(this.loadEmails, 1000);
+        //window.setTimeout(this.loadEmails, 1000);
     }
     
     this.loadEmails = function() {

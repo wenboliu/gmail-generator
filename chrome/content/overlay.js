@@ -38,7 +38,8 @@ var gmailgenerator = {
   },
   
   getTemplate: function(travelType) {
-      return new Template(travelType);
+      //return new Template(travelType);
+      return new EmailTemplate(travelType);
   }
   
 };

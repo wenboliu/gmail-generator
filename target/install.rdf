@@ -10,7 +10,6 @@
     <em:iconURL>chrome://gmailgenerator/content/email.png</em:iconURL>
     <em:description>generate gmail according to template</em:description>
     <em:optionsURL>chrome://gmailgenerator/content/options.xul</em:optionsURL>
-    <em:updateURL>http://</em:updateURL>
     <em:targetApplication>
       <Description>
         <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id> <!-- Firefox -->
