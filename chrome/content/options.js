@@ -11,7 +11,7 @@ var gmailgenerator_Options = new function()
     }
     
     this.loadEmailOnPageLoad = function() {
-        //window.setTimeout(this.loadEmails, 1000);
+        window.setTimeout(this.loadEmails, 1000);
     }
     
     this.loadEmails = function() {
@@ -41,12 +41,12 @@ var gmailgenerator_Options = new function()
     }
     
     this.loadDefaultTemplate = function() {
-        if(confirm("Are you want to load Domestic Email Template?")) {
+        /*if(confirm("Are you want to load Domestic Email Template?")) {
             emailOperator.save(this.createTravelEmail("domestic"));
         }
         if(confirm("Are you want to load Domestic Email Template?")) {
             emailOperator.save(this.createTravelEmail("international"));
-        }
+        }*/
     }
     
     this.createTravelEmail = function(travelType) {
