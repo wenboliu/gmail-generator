@@ -98,7 +98,11 @@ Leave.prototype.getHTMLContent = function() {
         } else {
                 content = content + "from &lt;leave start date&gt; to  &lt;leave end date&gt;.<br>";
         }
+<<<<<<< HEAD
         content = content + "My call number: &lt;Phone Number&gt;.<br><br>";
+=======
+        content = content + "My call number: &lt;Phone Number.&gt;<br><br>";
+>>>>>>> ac5e55ad31bf4b3b3815e17b04c55cf37c46012d
         content = content + "Regards,<br>";
         content = content + "&lt;Your Name&gt;";
         return content;
