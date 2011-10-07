@@ -35,7 +35,9 @@ Template.prototype.getContent = function() {
                                   + "Project Code: <PROJECT CODE>\n"
                                   + "Date of Arrival: <ARRIVAL DATE>\n"
                                   + "Date of Departure: <DEPARTURE DATE>\n"
-                                  + "Destination: <DESTINATION>";
+                                  + "Destination: <DESTINATION>\n"
+                                  + "Prefer Flight: <Prefer Flight>\n"
+                                  + "Other Notes: <Other Notes>";
 };
 
 Template.prototype.getHTMLContent = function() {
@@ -45,7 +47,9 @@ Template.prototype.getHTMLContent = function() {
                                   + "Project Code: &lt;PROJECT CODE&gt;<br>"
                                   + "Date of Arrival: &lt;ARRIVAL DATE&gt;<br>"
                                   + "Date of Departure: &lt;DEPARTURE DATE&gt;<br>"
-                                  + "Destination: &lt;DESTINATION&gt;";
+                                  + "Destination: &lt;DESTINATION&gt;<br>"
+                                  + "Prefer Flight: &lt;Prefer Flight&gt;<br>"
+                                  + "Other Notes: &lt;Other Notes&gt;";
 };
 
 //=========================================================================
@@ -76,10 +80,13 @@ Leave.prototype.getContent = function() {
         var content = "Hi, Admin Team\n\r"
                       + "I will take <Leave Type:annual,sick,marriage,bereavement,maternity,paternity> leave ";
         if (this.leaveType == "leave1") {
-                content = content + "on <leave date>."
+                content = content + "on <leave date>.\n\r";
         } else {
-                content = content + "from <leave start date> to  <leave end date>."
+                content = content + "from <leave start date> to  <leave end date>.\n\r";
         }
+        content = content + "My call number: <Phone Number>.\n\r\n\r";
+        content = content + "Regards,\n\r";
+        content = content + "<Your Name>";
         return content;
 };
 
@@ -87,10 +94,13 @@ Leave.prototype.getHTMLContent = function() {
         var content = "Hi, Admin Team<br><br>"
                       + "I will take <Leave Type:annual,sick,marriage,bereavement,maternity,paternity> leave ";
         if (this.leaveType == "leave1") {
-                content = content + "on &lt;leave date&gt;.<br><br>"
+                content = content + "on &lt;leave date&gt;.<br>";
         } else {
-                content = content + "from &lt;leave start date&gt; to  &lt;leave end date&gt;.<br><br>"
+                content = content + "from &lt;leave start date&gt; to  &lt;leave end date&gt;.<br>";
         }
+        content = content + "My call number: &lt;Phone Number.&gt;<br><br>";
+        content = content + "Regards,<br>";
+        content = content + "&lt;Your Name&gt;";
         return content;
 };
 
