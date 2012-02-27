@@ -45,8 +45,8 @@ gmailgenerator.populateMailContent = function() {
     //var template = gmailgenerator.getTemplate(gmailgenerator.travelType);
     var template;
     if (gmailgenerator.isBuildIn(gmailgenerator.travelType)) {
-       template = gmailgenerator.getTemplate(gmailgenerator.travelType);  
-    }else {
+       template = gmailgenerator.getTemplate(gmailgenerator.travelType); 
+    } else {
        template = emailOperator.getEmail(gmailgenerator.travelType); 
     }
     var canvasFrame = gmailgenerator.getCanvasFrame();
@@ -55,7 +55,7 @@ gmailgenerator.populateMailContent = function() {
         if (canvasDoc) {
               var toElem = canvasDoc.getElementsByName("to");
               if (toElem.length > 0) {
-                  canvasDoc.getElementById(":rf").childNodes[1].style.display = "";
+                  canvasDoc.getElementById(":rc").childNodes[1].style.display = "";
     //              canvasDoc.getElementById(":re").style.display = "none";
                   toElem[0].value = template.getTo();
                   var ccElem = canvasDoc.getElementsByName("cc");
