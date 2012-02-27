@@ -77,7 +77,7 @@ Leave.prototype.getSubject = function() {
 };
 
 Leave.prototype.getContent = function() {
-        var content = "Hi, Admin Team\n\r"
+        var content = "Hi, Time Off Team\n\r"
                       + "I will take <Leave Type:annual,sick,marriage,bereavement,maternity,paternity> leave ";
         if (this.leaveType == "leave1") {
                 content = content + "on <leave date>.\n\r";
