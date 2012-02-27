@@ -13,6 +13,7 @@ Template.prototype.getEmailCc = function() {
         } else {
                 emailCC = emailCC + ",bbduan@thoughtworks.com";
         }
+"jwebbpul@thoughtworks.com"
         return emailCC;
 };
 
